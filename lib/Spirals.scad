@@ -1,4 +1,5 @@
 include <Paths.scad>
+include <Rotations.scad>
 
 module spiral_repeat(height, step, twist) {
     for (h = [0 : step : height]) {
@@ -9,11 +10,6 @@ module spiral_repeat(height, step, twist) {
         
     } 
 }
-
-function z_rotation(angle) = 
-    [[cos(angle), -sin(angle), 0],
-     [sin(angle),  cos(angle), 0],
-     [         0,           0, 1]];
 
 function spiral(height = 10, step = 1, twist = 360, p=[1,0,0]) = [ for (h = [0 : step : height]) 
     let (angle = twist*h/height,
